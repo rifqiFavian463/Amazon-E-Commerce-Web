@@ -1,0 +1,29 @@
+.imgLogo {
+  width: 2.5rem;
+}
+.brandName {
+  font-weight: 600;
+}
+
+.navList {
+  font-weight: 500;
+}
+.navList:hover {
+  color: #fe956f;
+}
+
+.cgshoppingbag {
+  margin-left: 37px;
+}
+.cart {
+  background-color: var(--bg);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: linear-gradient(135.74deg, #0bb5ff 14.09%, #6dd3fe 83.81%);
+}
+.cart::-webkit-scrollbar-track {
+  background-color: #f8e367;
+}
+.linearGradient {
+  background-color: linear-gradient(135.74deg, #0bb5ff 14.09%, #6dd3fe 83.81%);
+}
