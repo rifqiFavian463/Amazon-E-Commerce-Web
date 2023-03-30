@@ -26,15 +26,15 @@ export default function Contents() {
 // Slider Component
 const SliderContainer = () => {
   const { products, setProducts } = useContext(productsContext);
-  const handleToCart = (item, itemId) => {
-    const index = products.findIndex((product) => product.id === itemId);
-    if (index !== -1) {
-      const updatedProducts = [...products];
-      updatedProducts[index] = {
-        ...updatedProducts[index],
-        qty: updatedProducts[index].qty + 1,
+  const handleToCart = (item) => {
+    const findIndex = products.findIndex((p) => p.id === item.id);
+    if (findIndex !== -1) {
+      const spreadProducts = [...products];
+      spreadProducts[findIndex] = {
+        ...spreadProducts[findIndex],
+        qty: spreadProducts[findIndex].qty + 1,
       };
-      setProducts(updatedProducts);
+      setProducts(spreadProducts);
     } else {
       setProducts([...products, item]);
     }
@@ -93,7 +93,7 @@ const SliderContainer = () => {
                     }}
                     whileTap={{ scale: 0.9 }}
                     className="border-gray-600 border-[1px] text-[.65rem] mt-[15px] w-[80px] p-[3px] rounded-[15px]  hover:bg-cyan-400 hover:text-white hover:border-none"
-                    onClick={() => handleToCart(item, item.id)}
+                    onClick={() => handleToCart(item)}
                   >
                     Buy Now
                   </motion.button>

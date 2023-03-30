@@ -96,10 +96,10 @@ const RenderProducts = () => {
     setProducts(products.filter((product) => product.id !== idProduct));
   };
   return (
-    <ul role="list" className="divide-y divide-white">
+    <motion.ul role="list" className="divide-y divide-white" variants={container} initial="hidden" animate="show">
       {products.map((product) => {
         return (
-          <li key={product.id} className="flex py-6">
+          <motion.li key={product.id} className="flex py-6" layout variants={item}>
             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-100 bg-white">
               <img src={product.img} alt="Product Image" className="h-[140%] -rotate-[20deg] mt-[15px] ml-[30px]" />
             </div>
@@ -124,9 +124,24 @@ const RenderProducts = () => {
                 </div>
               </div>
             </div>
-          </li>
+          </motion.li>
         );
       })}
-    </ul>
+    </motion.ul>
   );
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
 };
