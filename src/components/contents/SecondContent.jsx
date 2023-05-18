@@ -1,9 +1,8 @@
 import React from "react";
 import Plane from "../../assets/plane.png";
 import { ProductsData } from "../../data/products";
-import { useState } from "react";
-import { createContext, useContext } from "react";
-import { productsContext } from "../../App";
+import { createContext, useContext, useState } from "react";
+import { productsContext } from "../../Home";
 import { motion } from "framer-motion";
 
 function SecondContent() {

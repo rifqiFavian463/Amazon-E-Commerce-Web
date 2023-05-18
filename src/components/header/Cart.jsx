@@ -1,11 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useContext } from "react";
 import "./Header.css";
 import { cartContext } from "./Header";
-import { productsContext } from "../../App";
-import { motion } from "framer-motion";
+import { productsContext } from "../../Home";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 // Cart Component
 export default function Cart() {
@@ -96,52 +95,39 @@ const RenderProducts = () => {
     setProducts(products.filter((product) => product.id !== idProduct));
   };
   return (
-    <motion.ul role="list" className="divide-y divide-white" variants={container} initial="hidden" animate="show">
-      {products.map((product) => {
-        return (
-          <motion.li key={product.id} className="flex py-6" layout variants={item}>
-            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-100 bg-white">
-              <img src={product.img} alt="Product Image" className="h-[140%] -rotate-[20deg] mt-[15px] ml-[30px]" />
-            </div>
-
-            <div className="ml-4 flex flex-1 flex-col">
-              <div>
-                <div className="flex justify-between text-base font-medium text-gray-600">
-                  <h3>
-                    <a href="#">{product.name}</a>
-                  </h3>
-                  <p className="ml-4">{product.price}$</p>
-                </div>
-                <p className="mt-1 text-sm text-gray-700">{product.detail}</p>
+    <ul role="list" className="divide-y divide-white">
+      <AnimatePresence>
+        {products.map((product) => {
+          return (
+            <motion.li key={product.id} className="flex py-6" animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-100 bg-white">
+                <img src={product.img} alt="Product Image" className="h-[140%] -rotate-[20deg] mt-[15px] ml-[30px]" />
               </div>
-              <div className="flex flex-1 items-end justify-between text-sm">
-                <p className="text-black">Qty {product.qty}</p>
 
-                <div className="flex">
-                  <button type="button" className="font-medium text-gray-700 navList" onClick={() => handleRemoveButton(product.id)}>
-                    Remove
-                  </button>
+              <div className="ml-4 flex flex-1 flex-col">
+                <div>
+                  <div className="flex justify-between text-base font-medium text-gray-600">
+                    <h3>
+                      <a href="#">{product.name}</a>
+                    </h3>
+                    <p className="ml-4">{product.price}$</p>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-700">{product.detail}</p>
+                </div>
+                <div className="flex flex-1 items-end justify-between text-sm">
+                  <p className="text-black">Qty {product.qty}</p>
+
+                  <div className="flex">
+                    <button type="button" className="font-medium text-gray-700 navList" onClick={() => handleRemoveButton(product.id)}>
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.li>
-        );
-      })}
-    </motion.ul>
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
+    </ul>
   );
-};
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 1,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
 };

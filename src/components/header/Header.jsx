@@ -1,12 +1,11 @@
 import React from "react";
-import Logo from "../../assets/logo.png";
-import { useState, useContext } from "react";
-import { CgShoppingBag } from "react-icons/cg";
-import "./Header.css";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { createContext } from "react";
 import Cart from "./Cart";
-import { productsContext } from "../../App";
+import Logo from "../../assets/logo.png";
+import "./Header.css";
+import { productsContext } from "../../Home";
+import { useState, useContext, createContext } from "react";
+import { CgShoppingBag } from "react-icons/cg";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 export const cartContext = createContext(false);
 const Header = () => {

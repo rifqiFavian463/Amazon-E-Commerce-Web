@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { SliderProducts } from "../../data/products";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { productsContext } from "../../App";
+import { productsContext } from "../../Home";
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import FirstContent from "./FirstContent";
@@ -30,7 +30,7 @@ const SliderContainer = () => {
     const findIndex = products.findIndex((p) => p.id === item.id);
     if (findIndex !== -1) {
       const spreadProducts = [...products];
-      spreadProducts[findIndex] = {
+      products[findIndex] = {
         ...spreadProducts[findIndex],
         qty: spreadProducts[findIndex].qty + 1,
       };
