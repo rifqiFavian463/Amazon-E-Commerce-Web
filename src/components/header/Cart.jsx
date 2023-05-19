@@ -4,7 +4,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import "./Header.css";
 import { cartContext } from "./Header";
 import { productsContext } from "../../Home";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Cart Component
 export default function Cart() {

@@ -26,6 +26,7 @@ export default function Contents() {
 // Slider Component
 const SliderContainer = () => {
   const { products, setProducts } = useContext(productsContext);
+
   const handleToCart = (item) => {
     const findIndex = products.findIndex((p) => p.id === item.id);
     if (findIndex !== -1) {
